@@ -110,6 +110,10 @@
 					"clearControlAggregation": false,
 					"viewId": "Products",
 					"viewName": "Products"
+				},
+				"TestNavigationProperties": {
+					"viewType": "XML",
+					"viewName": "TestNavigationProperties"
 				}
 			}
 		}

@@ -3,7 +3,74 @@
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<Panel>
+							
+							<Table id="productsList" class="sapUiResponsiveMargin" width="auto" items="{path : 'northwindWebinar>/Products', parameters: {expand: 'Supplier'} }">
+								<columns>
+									<Column id="nameColumn">
+										<Text
+											id="nameColumnTitle"
+											text="{i18n>TableProductColumnTitle}"/>
+									</Column>
+									<Column
+										id="supplierNameColumn"
+										demandPopin="false"
+										minScreenWidth="Tablet">
+										<Text text="{i18n>TableSupplierColumnTitle}"/>
+									</Column>
+									<Column
+										id="unitPriceColumn"
+										hAlign="End"
+										demandPopin="true"
+										minScreenWidth="Tablet">
+										<Text text="{i18n>TablePriceColumnTitle}"/>
+									</Column>
+									<Column
+										id="unitsOnOrderColumn"
+										demandPopin="true"
+										minScreenWidth="Tablet"
+										hAlign="End">
+										<Text text="{i18n>TableUnitsOrderedColumnTitle}"/>
+									</Column>
+									<Column
+										id="unitsInStockColumn"
+										hAlign="End">
+										<Text text="{i18n>TableUnitsInStockColumnTitle}"/>
+									</Column>
+								</columns>
+								
+								<items >
+								    <ColumnListItem
+										type="Navigation"
+								        press="onPress">
+								        <cells>
+								         <ObjectIdentifier
+								            title="{northwindWebinar>ProductName}"/>
+								         <Text text = "{northwindWebinar>Supplier/CompanyName}"/>
+								         <ObjectNumber
+								            unit="EUR"
+								            number="{
+								               path: 'northwindWebinar>UnitPrice',
+								               formatter: '.formatter.numberUnit'
+								            }"/>
+								         <ObjectNumber
+								            number="{northwindWebinar>UnitsOnOrder}"
+								            unit="PC"/>
+								         <ObjectNumber
+								            number="{northwindWebinar>UnitsInStock}"
+								            unit="PC"
+								            state="{
+								               path: 'UnitsInStock',
+								               formatter: '.formatter.quantityState'
+								            }"/>
+								
+								      </cells>
+								   </ColumnListItem>
+								</items>
+							</Table>
+						</Panel>
+					</content>
 				</Page>
 			</pages>
 		</App>
